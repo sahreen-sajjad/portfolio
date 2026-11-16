@@ -15,7 +15,8 @@
     .brand{font:600 15px var(--display);letter-spacing:-.04em}.brand span{display:inline-block;background:var(--acid);padding:5px 7px;margin-right:7px}
     nav{display:flex;gap:30px;font:11px var(--mono);text-transform:uppercase;letter-spacing:.04em}nav a:hover,.text-link:hover{opacity:.55}
     .menu{display:none;background:none;border:0;font-size:24px}
-    .hero{padding:100px 0 86px;display:grid;grid-template-columns:1fr 240px;gap:50px;align-items:end}
+    .hero{padding:100px 0 86px;display:grid;grid-template-columns:1fr;gap:50px;align-items:end;position:relative;isolation:isolate;overflow:hidden}
+    .network-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.9}
     .eyebrow,.kicker{font:11px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
     .eyebrow:before{content:"";display:inline-block;width:22px;height:1px;background:var(--ink);vertical-align:middle;margin:0 10px 3px 0}
     h1{font:600 clamp(58px,9vw,116px)/.91 var(--display);letter-spacing:-.085em;margin:28px 0 30px;max-width:850px}
@@ -62,6 +63,7 @@
     .about-detail{font-size:14px;line-height:1.8;color:var(--muted);max-width:470px}
     .facts{display:grid;grid-template-columns:1fr 1fr;margin-top:28px;border-top:1px solid var(--line)}
     .fact{padding:16px 0;border-bottom:1px solid var(--line)}.fact small{display:block;font:9px var(--mono);text-transform:uppercase;color:var(--muted);margin-bottom:7px}.fact b{font:500 14px var(--display)}
+    .paper-link{display:inline-block;margin-top:12px;font:11px var(--mono);color:var(--ink);text-decoration:underline;text-underline-offset:4px}
     .skills{display:flex;flex-wrap:wrap;gap:9px}.skills span{padding:11px 14px;border:1px solid var(--line);font:11px var(--mono)}
     .contact{background:var(--ink);color:var(--paper);padding:85px 0}
     .contact .kicker{color:#a8aa9f}.contact h2{font:600 clamp(48px,8vw,94px)/.95 var(--display);letter-spacing:-.08em;margin:24px 0 30px;max-width:800px}
@@ -76,19 +78,19 @@
 <body>
   <header class="wrap topbar">
     <a class="brand" href="#home"><span>SS</span> SAHREEN SAJJAD</a>
-    <nav id="nav"><a href="#work">Selected work</a><a href="#approach">What I do</a><a href="#about">About</a><a href="#contact">Contact ↗</a></nav>
+    <nav id="nav"><a href="#work">Selected work</a><a href="#approach">What I do</a><a href="#about">About</a><a href="#publications">Research</a><a href="#certifications">Certifications</a><a href="#contact">Contact ↗</a></nav>
     <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
   </header>
 
   <main id="home">
     <div class="wrap hero">
+      <canvas class="network-canvas" id="networkCanvas" aria-hidden="true"></canvas>
       <div>
         <div class="eyebrow">Data scientist · Aberdeen, UK</div>
         <h1>Making data<br><span class="outline">make sense.</span></h1>
-        <p class="hero-copy">I’m a data scientist working at the intersection of <strong>machine learning, engineering and real-world data</strong>. I build analytical systems that turn complex industrial data into something useful, reliable and actionable.</p>
+        <p class="hero-copy">I’m a data scientist specialising in <strong>machine learning, generative AI and data engineering</strong>. From offshore emissions prediction to NLP and healthcare analytics, I build systems that turn complex data into practical solutions.</p>
         <div class="actions"><a class="btn primary" href="#work">Explore my work <span>↘</span></a><a class="btn" href="mailto:sahreen.sajjad@gmail.com">Get in touch <span>↗</span></a></div>
       </div>
-      <aside class="hero-side"><b>Currently interested in</b>Applied machine learning<br>Data products & visualisation<br>Reliable production systems<br><br><b>Background</b>Data science · Engineering<br>Python · SQL · Analytics</aside>
     </div>
 
     <div class="ticker"><div class="wrap"><span>Python</span><i>✳</i><span>Machine learning</span><i>✳</i><span>Industrial analytics</span><i>✳</i><span>Data visualisation</span><i>✳</i><span>SQL</span><i>✳</i><span>Applied research</span></div></div>
@@ -111,30 +113,55 @@
       <div class="wrap">
         <div class="section-head reveal"><div class="kicker">02 / Selected work</div><div><h2>A few problems I’ve worked on.</h2><p>Selected project stories. Some work was delivered in a proprietary industrial environment, so the descriptions focus on the problem-solving and outcomes rather than confidential implementation details.</p></div></div>
         <div class="project-tools reveal" role="group" aria-label="Filter projects">
-          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="ml">Machine learning</button><button class="filter" data-filter="data">Data systems</button><button class="filter" data-filter="independent">Independent</button>
+          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="ml">Machine learning</button><button class="filter" data-filter="data">Data systems</button><button class="filter" data-filter="nlp">NLP &amp; GenAI</button><button class="filter" data-filter="research">Research projects</button>
         </div>
         <div class="projects">
           <article class="project reveal" data-category="ml">
-            <div class="project-top"><span>01 / Industrial machine learning</span><span>Case study ↗</span></div>
+            <div class="project-top"><span>01 / Predictive ML</span><span>Selected work</span></div>
             <div class="project-mark"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-            <div><h3>Predictive emissions monitoring</h3><p>Designed and developed a near-real-time emissions prediction system for offshore assets, using operational data to estimate pollutant concentrations and support continuous monitoring.</p><div class="tags"><span>Python</span><span>Machine learning</span><span>Energy</span><span>Production</span></div></div>
+            <div><h3>Predictive Emissions Monitoring</h3><p>Developed a near-real-time predictive emissions monitoring system for a leading oil and gas company, modelling NOx, CO and SOx from offshore operational time-series data using GAN-based augmentation and recurrent neural networks.</p><div class="tags"><span>GANs</span><span>RNNs</span><span>Time series</span><span>Python</span></div></div>
           </article>
           <article class="project reveal" data-category="data">
-            <div class="project-top"><span>02 / Data engineering</span><span>Case study ↗</span></div>
+            <div class="project-top"><span>02 / Data engineering</span><span>Selected work</span></div>
             <div class="project-mark"><div class="network"></div></div>
-            <div><h3>Operational data workflows</h3><p>Built and maintained data workflows that bring together time-series operational signals, handle missing and inconsistent values, and prepare reliable inputs for downstream analytics.</p><div class="tags"><span>Python</span><span>Pandas</span><span>SQL</span><span>Data quality</span></div></div>
+            <div><h3>Industrial Emissions Data Platform</h3><p>Built end-to-end, near-real-time data pipelines for leading energy companies, supporting emissions calculations, trend analysis and data-driven operational recommendations. Used Python, SQL, Snowflake and Microsoft Azure for ingestion, processing and validation.</p><div class="tags"><span>Python</span><span>SQL</span><span>Snowflake</span><span>Azure</span></div></div>
+          </article>
+          <article class="project reveal" data-category="nlp">
+            <div class="project-top"><span>03 / NLP</span><span>Selected work</span></div>
+            <div class="project-mark"><div class="pulse"><svg viewBox="0 0 160 75" fill="none"><path d="M2 48 L24 48 L34 44 L43 50 L54 14 L65 65 L76 35 L87 48 L101 48 L111 28 L121 54 L132 45 L158 45" stroke="#171916" stroke-width="2.5"/></svg></div></div>
+            <div><h3>Safety Observations Analytics</h3><p>Applied RAG, BERTopic and LDA to unstructured safety observations and incident data for a major enterprise client to identify recurring themes, patterns and trends.</p><div class="tags"><span>RAG</span><span>BERTopic</span><span>LDA</span><span>NLP</span></div></div>
+          </article>
+          <article class="project reveal" data-category="nlp">
+            <div class="project-top"><span>04 / Generative AI</span><span>Selected work</span></div>
+            <div class="project-mark"><div class="network"></div></div>
+            <div><h3>AI-powered Safety Analytics</h3><p>Developed LLM-powered workflows for a leading consumer health company using GPT-4 APIs, prompt engineering and agents to automate safety-data extraction, classification and analysis.</p><div class="tags"><span>GPT-4</span><span>Prompt engineering</span><span>Agents</span><span>CI/CD</span></div></div>
           </article>
           <article class="project reveal" data-category="ml">
-            <div class="project-top"><span>03 / Model development</span><span>Case study ↗</span></div>
+            <div class="project-top"><span>05 / Classification</span><span>Selected work</span></div>
+            <div class="project-mark"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div><h3>Low-carbon Project Classification</h3><p>Used decision trees and XGBoost to infer classification criteria for projects contributing to the Low Carbon Economy Transition.</p><div class="tags"><span>Decision trees</span><span>XGBoost</span><span>Classification</span></div></div>
+          </article>
+          <article class="project reveal" data-category="ml">
+            <div class="project-top"><span>06 / Healthcare</span><span>Selected work</span></div>
             <div class="project-mark"><div class="pulse"><svg viewBox="0 0 160 75" fill="none"><path d="M2 48 L24 48 L34 44 L43 50 L54 14 L65 65 L76 35 L87 48 L101 48 L111 28 L121 54 L132 45 L158 45" stroke="#171916" stroke-width="2.5"/></svg></div></div>
-            <div><h3>Model evaluation & reliability</h3><p>Worked across model-building and deployment workflows, investigating prediction failures, data compatibility and edge cases to improve the reliability of analytical systems.</p><div class="tags"><span>Model evaluation</span><span>Python</span><span>Debugging</span></div></div>
+            <div><h3>Epilepsy Prediction</h3><p>Developed machine-learning and RNN approaches to epilepsy prediction for a diagnostic healthcare provider, with interactive Tableau dashboards to support radiologists’ analysis.</p><div class="tags"><span>RNNs</span><span>Healthcare</span><span>Tableau</span></div></div>
           </article>
-          <article class="project reveal" data-category="independent">
-            <div class="project-top"><span>04 / Independent project · In progress</span><span>Exploration ↗</span></div>
-            <div class="project-mark"><div style="font:500 46px var(--display);letter-spacing:-.09em">DATA<span style="background:var(--acid);padding:0 5px">/</span>LAB</div></div>
-            <div><h3>The Data Lab</h3><p>An independent playground for exploring how machine-learning systems behave: testing assumptions, visualising model errors and experimenting with ways to make models more robust.</p><div class="tags"><span>Python</span><span>Streamlit</span><span>Plotly</span><span>Experiments</span></div></div>
+          <article class="project reveal" data-category="research">
+            <div class="project-top"><span>07 / Academic project</span><span>Selected work</span></div>
+            <div class="project-mark"><div class="network"></div></div>
+            <div><h3>Image Captioning With Attention</h3><p>Built an image-captioning pipeline using autoencoders, attention mechanisms and nearest-neighbour methods on ARMBench and MS COCO datasets.</p><div class="tags"><span>Computer vision</span><span>Attention</span><span>Autoencoders</span></div></div>
           </article>
-        </div>
+          <article class="project reveal" data-category="research">
+            <div class="project-top"><span>08 / Academic project</span><span>Selected work</span></div>
+            <div class="project-mark"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div><h3>Movie Genre Prediction</h3><p>Compared classical ML, clustering and transformer approaches, including BERT, for predicting movie genres from Cornell Movie Dataset dialogues.</p><div class="tags"><span>NLP</span><span>BERT</span><span>SVM</span><span>Transformers</span></div></div>
+          </article>
+                  <article class="project reveal" data-category="nlp">
+            <div class="project-top"><span>09 / Academic NLP project</span><span>Selected work</span></div>
+            <div class="project-mark"><div class="network"></div></div>
+            <div><h3>Topic Modelling On Tweets Using Single Pass Clustering And LDA</h3><p>Explored themes in a tweets dataset using Single Pass Clustering and Latent Dirichlet Allocation (LDA) to group related posts and discover underlying topics.</p><div class="tags"><span>NLP</span><span>Single Pass Clustering</span><span>LDA</span><span>Topic Modelling</span></div></div>
+          </article>
+</div>
       </div>
     </section>
 
@@ -143,33 +170,118 @@
         <div class="section-head reveal"><div class="kicker">03 / A little about me</div><div><h2>Curious by nature. Practical by design.</h2></div></div>
         <div class="about-grid">
           <div class="about-text reveal">I’m interested in the space where <em>data meets the physical world</em> — where the inputs are imperfect, the systems are complex, and the answer needs to work beyond a notebook.</div>
-          <div class="reveal"><p class="about-detail">I have a background in Information Science Engineering and a Master’s in Data Science from the University of Glasgow. My work has focused on applied machine learning and emissions analytics in the energy sector. I like understanding how things work, asking awkward questions of data, and building solutions that stand up to real-world use.</p>
-            <div class="facts"><div class="fact"><small>Education</small><b>MSc Data Science</b></div><div class="fact"><small>University</small><b>University of Glasgow</b></div><div class="fact"><small>Experience</small><b>Industrial data science</b></div><div class="fact"><small>Based in</small><b>Aberdeen, UK</b></div></div>
+          <div class="reveal"><p class="about-detail">I earned an MSc in Data Science (Merit) from the University of Glasgow and a BE in Information Science (First Class with Distinction) from R.V. College of Engineering. My experience spans industrial emissions analytics, generative AI, NLP and healthcare prediction. I like understanding how things work, asking awkward questions of data, and building solutions that stand up to real-world use.</p>
+            <div class="facts"><div class="fact"><small>Master’s Degree · 2022–2023</small><b>MSc Data Science · Merit</b><small>University of Glasgow, UK</small></div><div class="fact"><small>Bachelor’s Degree · 2018–2022</small><b>BE Information Science · First Class with Distinction</b><small>R.V. College of Engineering, India</small></div><div class="fact"><small>Based in</small><b>Aberdeen, UK</b></div></div>
           </div>
         </div>
       </div>
     </section>
 
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="kicker">04 / Publications</div><div><h2>Published research.</h2><p>Research work spanning generative music and cloud security.</p></div></div>
+        <div class="services reveal">
+          <article class="service"><div class="num">2021 · IEEE Xplore · ICSES</div><h3>Music Generation for Novices using RNN</h3><p>Published at the International Conference on Innovative Computing, Intelligent Communication, and Smart Electrical Systems. <a class="paper-link" href="https://doi.org/10.1109/ICSES52305.2021.9633906" target="_blank" rel="noopener noreferrer">Read paper ↗</a></p></article>
+          <article class="service"><div class="num">2021 · IJIRSET · Vol. 10, Issue 10</div><h3>Cloud Security: Challenges and Concerns</h3><p>Research publication examining cloud security challenges and concerns. <a class="paper-link" href="https://www.ijirset.com/upload/2021/october/68_Cloud_NC.pdf" target="_blank" rel="noopener noreferrer">View publication ↗</a></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="kicker">05 / Certifications</div><div><h2>Continually learning.</h2><p>Professional certification and technical coursework.</p></div></div>
+        <div class="services reveal">
+          <article class="service"><div class="num">Microsoft · Cloud &amp; AI</div><h3>Azure Data Scientist Associate</h3><p>Professional certification in building, training and deploying machine-learning solutions on Azure. <a class="paper-link" href="https://learn.microsoft.com/en-us/users/sahreensajjad-6218/credentials/76007c5036d35438?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" rel="noopener noreferrer">View certificate ↗</a></p></article>
+          <article class="service"><div class="num">Coursera · University of Minnesota</div><h3>Software Development Processes And Methodologies</h3><p>Coursework in software development lifecycles, Agile, Waterfall, requirements and testing. <a class="paper-link" href="https://coursera.org/share/894e921e10d8c56e64600fd8b27c27c8" target="_blank" rel="noopener noreferrer">View certificate ↗</a></p></article>
+        </div>
+        <p class="about-detail" style="margin-top:18px"></p>
+      </div>
+    </section>
+
     <section id="toolkit">
       <div class="wrap">
-        <div class="section-head reveal"><div class="kicker">04 / Toolkit</div><div><h2>The tools behind the work.</h2><p>A working toolkit across data analysis, machine learning, databases and visualisation.</p></div></div>
-        <div class="skills reveal"><span>Python</span><span>Pandas</span><span>SQL</span><span>Scikit-learn</span><span>TensorFlow / Keras</span><span>Plotly</span><span>Shiny</span><span>Azure</span><span>Git</span><span>Poetry</span><span>SSMS</span><span>Time-series data</span><span>Model deployment</span><span>Data visualisation</span></div>
+        <div class="section-head reveal"><div class="kicker">06 / Toolkit</div><div><h2>The tools behind the work.</h2><p>A working toolkit across data analysis, machine learning, databases and visualisation.</p></div></div>
+        <div class="skills reveal"><span>Python</span><span>Pandas</span><span>SQL</span><span>Scikit-learn</span><span>TensorFlow / Keras</span><span>Plotly</span><span>Shiny</span><span>Azure</span><span>Git</span><span>Poetry</span><span>SSMS</span><span>Time-series data</span><span>Model deployment</span><span>Data visualisation</span><span>RAG</span><span>BERTopic</span><span>XGBoost</span><span>Snowflake</span><span>Hugging Face</span><span>Docker</span><span>Power BI</span><span>Tableau</span></div>
       </div>
     </section>
   </main>
 
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="kicker">05 / Contact</div>
+      <div class="kicker">07 / Contact</div>
       <h2>Have an interesting problem? Let's talk.</h2>
       <p style="color:#b8bab0;max-width:480px;line-height:1.7">I’m always happy to connect about data science, machine learning, interesting projects or new opportunities.</p>
-      <div class="actions"><a class="btn primary" href="mailto:sahreen.sajjad@gmail.com">Email me ↗</a><a class="btn" href="https://www.linkedin.com/in/sahreen-sajjad/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
+      <div class="actions"><a class="btn primary" href="mailto:sahreen.sajjad@gmail.com">Email me ↗</a><a class="btn" href="https://www.linkedin.com/in/sahreen-sajjad-18b250289/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
       <div class="contact-meta"><span>Aberdeen, United Kingdom</span><span>Open to interesting conversations</span><span>© <span id="year"></span> Sahreen Sajjad</span></div>
     </div>
   </section>
   <footer class="wrap"><span>Designed & built with care.</span><a href="#home">Back to top ↑</a></footer>
 
   <script>
+
+    // Lightweight animated particle network, drawn behind the introduction.
+    (() => {
+      const canvas = document.getElementById('networkCanvas');
+      const hero = canvas.closest('.hero');
+      const ctx = canvas.getContext('2d');
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let w = 0, h = 0, dots = [], raf;
+      const mouse = {x: null, y: null};
+      function resize() {
+        const bounds = hero.getBoundingClientRect();
+        const dpr = Math.min(devicePixelRatio || 1, 2);
+        w = bounds.width; h = bounds.height;
+        canvas.width = Math.round(w*dpr); canvas.height = Math.round(h*dpr);
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        dots = Array.from({length: Math.min(85, Math.max(32, Math.round(w/14)))}, () => ({
+          x: Math.random()*w, y: Math.random()*h,
+          vx: (Math.random()-.5)*.48, vy: (Math.random()-.5)*.48,
+          radius: .8+Math.random()*1.4
+        }));
+        if (reducedMotion) draw();
+      }
+      function draw() {
+        ctx.clearRect(0,0,w,h);
+        dots.forEach((a,i) => {
+          if (!reducedMotion) {
+            a.x += a.vx; a.y += a.vy;
+            if(a.x<0 || a.x>w) a.vx *= -1;
+            if(a.y<0 || a.y>h) a.vy *= -1;
+          }
+          for(let j=i+1;j<dots.length;j++) {
+            const b=dots[j], dist=Math.hypot(a.x-b.x,a.y-b.y);
+            if(dist<145) {
+              ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+              ctx.strokeStyle=`rgba(65,85,59,${(1-dist/145)*.27})`;
+              ctx.lineWidth=.8;ctx.stroke();
+            }
+          }
+          if(mouse.x!==null) {
+            const dist=Math.hypot(a.x-mouse.x,a.y-mouse.y);
+            if(dist<125) {
+              ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(mouse.x,mouse.y);
+              ctx.strokeStyle=`rgba(140,165,44,${(1-dist/125)*.5})`;
+              ctx.lineWidth=1;ctx.stroke();
+            }
+          }
+          ctx.beginPath();ctx.arc(a.x,a.y,a.radius,0,Math.PI*2);
+          ctx.fillStyle=i%8===0?'rgba(142,170,42,.85)':'rgba(67,84,61,.57)';ctx.fill();
+        });
+        if(!reducedMotion) raf=requestAnimationFrame(draw);
+      }
+      hero.addEventListener('pointermove',e=>{
+        const rect=hero.getBoundingClientRect();
+        mouse.x=e.clientX-rect.left;mouse.y=e.clientY-rect.top;
+      });
+      hero.addEventListener('pointerleave',()=>{mouse.x=null;mouse.y=null;});
+      window.addEventListener('resize',resize);
+      document.addEventListener('visibilitychange',()=>{
+        if(document.hidden) cancelAnimationFrame(raf);
+        else if(!reducedMotion) {cancelAnimationFrame(raf);draw();}
+      });
+      resize();if(!reducedMotion) draw();
+    })();
+
     const menu = document.getElementById('menu');
     const nav = document.getElementById('nav');
     menu.addEventListener('click', () => nav.classList.toggle('open'));

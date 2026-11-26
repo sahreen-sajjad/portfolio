@@ -56,7 +56,7 @@
     .project h3{font:600 25px var(--display);letter-spacing:-.05em;margin:8px 0}
     .project p{font-size:13px;line-height:1.6;color:#65685f;max-width:490px;margin:0 0 16px}
     .tags{display:flex;gap:7px;flex-wrap:wrap}.tags span{font:9px var(--mono);padding:6px 8px;border:1px solid #c9c9bf;text-transform:uppercase}
-    .project[hidden]{display:none}
+    .featured-project{border-top:3px solid #9db83d}.project[hidden]{display:none}
     .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
     .about-text{font:400 clamp(21px,2.6vw,31px)/1.35 var(--display);letter-spacing:-.04em;max-width:570px}
     .about-text em{font-style:normal;background:var(--acid);padding:0 4px}
@@ -121,9 +121,15 @@
       <div class="wrap">
         <div class="section-head reveal"><div class="kicker">02 / Selected work</div><div><h2>A few problems I’ve worked on.</h2><p>Selected project stories. Some work was delivered in a proprietary industrial environment, so the descriptions focus on the problem-solving and outcomes rather than confidential implementation details.</p></div></div>
         <div class="project-tools reveal" role="group" aria-label="Filter projects">
-          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="ml">Machine learning</button><button class="filter" data-filter="data">Data systems</button><button class="filter" data-filter="nlp">NLP &amp; GenAI</button><button class="filter" data-filter="research">Research projects</button>
+          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="ml">Machine learning</button><button class="filter" data-filter="data">Data systems</button><button class="filter" data-filter="nlp">NLP &amp; GenAI</button><button class="filter" data-filter="agentic">Agentic AI</button><button class="filter" data-filter="research">Research projects</button>
         </div>
         <div class="projects">
+          <article class="project reveal featured-project" data-category="nlp agentic">
+            <div class="project-top"><span>10 / Agentic AI</span><span>Personal project · Featured</span></div>
+            <div class="project-mark"><svg viewBox="0 0 200 100" width="200" height="100" fill="none" aria-hidden="true"><g stroke="#777a70" stroke-width="1.1"><circle cx="100" cy="50" r="42"/><ellipse cx="100" cy="50" rx="21" ry="42"/><path d="M58 50h84M65 28h70M65 72h70M100 8v84"/><path d="M30 75L77 42 122 61 170 20" stroke-dasharray="4 4"/></g><g fill="#171916"><circle cx="30" cy="75" r="4"/><circle cx="77" cy="42" r="4"/><circle cx="122" cy="61" r="4"/></g><path d="M170 8a12 12 0 0 0-12 12c0 8 12 20 12 20s12-12 12-20a12 12 0 0 0-12-12Z" fill="#d7f36a" stroke="#171916" stroke-width="1.5"/><circle cx="170" cy="20" r="4" fill="#171916"/></svg></div>
+            <div><h3>GeoQuest AI</h3><p>Built a GeoGuessr-inspired geography game using LangChain, LangGraph, MCP and FastAPI. Multi-agent orchestration and workflows power geographical reasoning, contextual hint generation, guess evaluation and adaptive difficulty, supported by RAG and FAISS retrieval.</p><div class="tags"><span>LangChain</span><span>LangGraph</span><span>MCP</span><span>Agentic AI</span><span>FastAPI</span><span>RAG / FAISS</span></div><a class="paper-link" href="https://github.com/sahreen-sajjad/geoquest-ai" target="_blank" rel="noopener noreferrer">View GitHub project ↗</a></div>
+          </article>
+
           <article class="project reveal" data-category="ml">
             <div class="project-top"><span>01 / Predictive ML</span><span>Selected work</span></div>
             <div class="project-mark"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
@@ -139,7 +145,7 @@
             <div class="project-mark"><div class="pulse"><svg viewBox="0 0 160 75" fill="none"><path d="M2 48 L24 48 L34 44 L43 50 L54 14 L65 65 L76 35 L87 48 L101 48 L111 28 L121 54 L132 45 L158 45" stroke="#171916" stroke-width="2.5"/></svg></div></div>
             <div><h3>Safety Observations Analytics</h3><p>Applied RAG, BERTopic and LDA to unstructured safety observations and incident data for a major enterprise client to identify recurring themes, patterns and trends.</p><div class="tags"><span>RAG</span><span>BERTopic</span><span>LDA</span><span>NLP</span></div></div>
           </article>
-          <article class="project reveal" data-category="nlp">
+          <article class="project reveal" data-category="nlp agentic">
             <div class="project-top"><span>04 / Generative AI</span><span>Selected work</span></div>
             <div class="project-mark"><div class="network"></div></div>
             <div><h3>AI-powered Safety Analytics</h3><p>Developed LLM-powered workflows for a leading consumer health company using GPT-4 APIs, prompt engineering and agents to automate safety-data extraction, classification and analysis.</p><div class="tags"><span>GPT-4</span><span>Prompt engineering</span><span>Agents</span><span>CI/CD</span></div></div>
@@ -209,14 +215,14 @@
     <section id="toolkit">
       <div class="wrap">
         <div class="section-head reveal"><div class="kicker">06 / Toolkit</div><div><h2>The tools behind the work.</h2><p>A working toolkit across data analysis, machine learning, databases and visualisation.</p></div></div>
-        <div class="skills reveal"><span>Python</span><span>Pandas</span><span>SQL</span><span>Scikit-learn</span><span>TensorFlow / Keras</span><span>Plotly</span><span>Shiny</span><span>Azure</span><span>Git</span><span>Poetry</span><span>SSMS</span><span>Time-series data</span><span>Model deployment</span><span>Data visualisation</span><span>RAG</span><span>BERTopic</span><span>XGBoost</span><span>Snowflake</span><span>Hugging Face</span><span>Docker</span><span>Power BI</span><span>Tableau</span></div>
+        <div class="skills reveal"><span>Python</span><span>Pandas</span><span>SQL</span><span>Scikit-learn</span><span>TensorFlow / Keras</span><span>Plotly</span><span>Shiny</span><span>Azure</span><span>Git</span><span>Poetry</span><span>SSMS</span><span>Time-series data</span><span>Model deployment</span><span>Data visualisation</span><span>RAG</span><span>LangChain</span><span>LangGraph</span><span>MCP</span><span>FastAPI</span><span>FAISS</span><span>BERTopic</span><span>XGBoost</span><span>Snowflake</span><span>Hugging Face</span><span>Docker</span><span>Power BI</span><span>Tableau</span></div>
       </div>
     </section>
     <section id="outside">
       <div class="wrap">
         <div class="section-head reveal"><div class="kicker">07 / Beyond the code</div><div><h2>When I’m not looking at data.</h2><p>I'm kind of still looking at data.</p></div></div>
         <div class="outside-grid">
-          <article class="outside-card reveal"><div class="outside-icon">◎</div><h3>GeoGuessr</h3><p>I love playing GeoGuessr — figuring out where in the world I’ve landed from a road sign, a landscape or a tiny detail.</p></article>
+          <article class="outside-card reveal"><div class="outside-icon">◎</div><h3>GeoGuessr</h3><p>I love playing GeoGuessr — figuring out where in the world I’ve landed from a road sign, a landscape or a tiny detail. That interest inspired me to build GeoQuest AI, my own agent-powered geography game.</p><a class="paper-link" href="https://github.com/sahreen-sajjad/geoquest-ai" target="_blank" rel="noopener noreferrer">Explore GeoQuest AI ↗</a></article>
           <article class="outside-card reveal"><div class="outside-icon">▣</div><h3>Film Club</h3><p>I host a film club where we pick themes, watch films and share opinions — sometimes very strong ones. Some of my favourite films are <em>Into the Wild</em>, <em>Trainspotting</em> and <em>City of God</em>.</p><a class="paper-link" href="https://sahreensajjad.github.io/filmclub/" target="_blank" rel="noopener noreferrer">Visit Film Club ↗</a></article>
         </div>
       </div>
@@ -312,7 +318,7 @@
         button.classList.add('active');
         const filter = button.dataset.filter;
         document.querySelectorAll('.project').forEach(card => {
-          card.hidden = filter !== 'all' && card.dataset.category !== filter;
+          card.hidden = filter !== 'all' && !card.dataset.category.split(/\s+/).includes(filter);
         });
       });
     });
